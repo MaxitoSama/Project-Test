@@ -14,8 +14,8 @@ int main(int argc, char* args[])
 	SDL_Window* max;
 	SDL_Renderer* maxito;
 	SDL_Event event;
-	SDL_Surface* image1,*image2,*image3;
-	SDL_Texture* tex,*tox,*laser;
+	SDL_Surface* image1,*image2,*image3,*Back1,*Back2;
+	SDL_Texture* tex,*tox,*laser,*baka1,*baka2;
 	int counter = 0;
 
 	SDL_CreateWindowAndRenderer(800, 800, SDL_RENDERER_PRESENTVSYNC, &max, &maxito);//Create a window
@@ -23,7 +23,14 @@ int main(int argc, char* args[])
 	SDL_Rect rect = { 150,175,100,50 };   //Create a rectangle in the position 150,175 with the size 100x50
 	SDL_Rect screen = { 0,0,800,800 };
 	SDL_Rect shoote[BULLET];
-	shoote[0]={ -25,-25,25,25};
+	SDL_Rect baki = { 0,0,800,800 };
+	SDL_Rect bakit = { 800,0,800,800 };
+	
+	for (int i = 0; i < BULLET; i++)
+	{
+		shoote[i] = { -25,-25,25,25 };
+	}
+	
 	
 	
 	image1 = SDL_LoadBMP("flappybird.bmp");
@@ -41,11 +48,17 @@ int main(int argc, char* args[])
 	{
 		printf("SDL_image Error: %s\n", SDL_GetError());
 	}
+	Back1 = SDL_LoadBMP("back.bmp");
+	Back2 = SDL_LoadBMP("back.bmp");
 
 	
 	tex = SDL_CreateTextureFromSurface(maxito,image1);
 	tox = SDL_CreateTextureFromSurface(maxito, image2);
 	laser = SDL_CreateTextureFromSurface(maxito, image3);
+	baka1= SDL_CreateTextureFromSurface(maxito, Back1);
+	baka2 = SDL_CreateTextureFromSurface(maxito, Back2);
+
+
 	SDL_FreeSurface(image1);
 	SDL_FreeSurface(image2);
 	SDL_FreeSurface(image3);
@@ -56,8 +69,23 @@ int main(int argc, char* args[])
 		SDL_SetRenderDrawColor(maxito, 255, 0, 0, 255);//red
 		SDL_RenderClear(maxito); // Clear the window and make it all red
 		//SDL_SetRenderDrawColor(maxito, 0, 0, 255, 255);   //Color of the rectangle
-		SDL_RenderCopy(maxito, tox, NULL, &screen);//renderitza la textura del rectangle que fa de background( si el renderitzem l'ultim quedara per sobre dels altres)
-		
+		//SDL_RenderCopy(maxito, tox, NULL, &screen);//renderitza la textura del rectangle que fa de background( si el renderitzem l'ultim quedara per sobre dels altres)
+		SDL_RenderCopy(maxito, baka1, NULL, &baki);
+		SDL_RenderCopy(maxito, baka2, NULL, &bakit);
+
+		baki.x--;
+		bakit.x--;
+
+		if (baki.x == -800)
+		{
+			baki.x = 800;
+		}
+		if (bakit.x == -800)
+		{
+			bakit.x = 800;
+		}
+
+
 		for (int i = 0; i < 2; i++)
 		{
 			SDL_RenderCopy(maxito, laser, NULL, &shoote[i]);
