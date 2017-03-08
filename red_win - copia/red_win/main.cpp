@@ -4,7 +4,7 @@
 
 #pragma comment( lib, "SDL/libx86/SDL2.lib")
 #pragma comment( lib, "SDL/libx86/SDL2main.lib")
-#define BULLET 2
+#define BULLET 10
 
 int main(int argc, char* args[])
 {
@@ -86,7 +86,7 @@ int main(int argc, char* args[])
 		}
 
 
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < BULLET; i++)
 		{
 			SDL_RenderCopy(maxito, laser, NULL, &shoote[i]);
 		}
@@ -100,7 +100,7 @@ int main(int argc, char* args[])
 		SDL_RenderCopy(maxito, tex, NULL, &rect);//renderitza la textura del rectangle petit
 		SDL_RenderPresent(maxito);// Render the changes above(per sobre)
 		SDL_PollEvent(&event);
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < BULLET; i++)
 		{
 			shoote[i].x++;
 		}
@@ -150,7 +150,7 @@ int main(int argc, char* args[])
 			break;
 		}
 		}
-		SDL_Delay(5);
+		SDL_Delay(1);
 	}
 	SDL_Quit();
 
