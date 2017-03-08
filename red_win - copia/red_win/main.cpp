@@ -1,22 +1,26 @@
 #include "SDL/include/SDL.h"
+#include "SDL/include/SDL_image.h"
 #include <iostream>
 #include <stdio.h>
 
 #pragma comment( lib, "SDL/libx86/SDL2.lib")
 #pragma comment( lib, "SDL/libx86/SDL2main.lib")
-#define BULLET 10
+#pragma comment( lib, "SDL/libx86/SDL2_image.lib")
+#define BULLET 100
 
 int main(int argc, char* args[])
 {
+	IMG_INIT_PNG;
 	SDL_Init(SDL_INIT_EVERYTHING);
 	bool close = false;
 	bool shoot = false;
 	SDL_Window* max;
 	SDL_Renderer* maxito;
 	SDL_Event event;
-	SDL_Surface* image1,*image2,*image3,*Back1,*Back2;
-	SDL_Texture* tex,*tox,*laser,*baka1,*baka2;
+	SDL_Surface* image1,*image2,*image3,*Back1,*Back2,*taste;
+	SDL_Texture* tex,*tox,*laser,*baka1,*baka2,*tisto;
 	int counter = 0;
+
 
 	SDL_CreateWindowAndRenderer(800, 800, SDL_RENDERER_PRESENTVSYNC, &max, &maxito);//Create a window
 	
@@ -25,7 +29,9 @@ int main(int argc, char* args[])
 	SDL_Rect shoote[BULLET];
 	SDL_Rect baki = { 0,0,800,800 };
 	SDL_Rect bakit = { 800,0,800,800 };
-	
+	SDL_Rect Sprite = { 320,40,40,40};
+	SDL_Rect Sprite2 = { 64,240,16,16 };
+	SDL_Rect Sprite3 = { 0,0,130,130 };
 	for (int i = 0; i < BULLET; i++)
 	{
 		shoote[i] = { -25,-25,25,25 };
@@ -50,6 +56,8 @@ int main(int argc, char* args[])
 	}
 	Back1 = SDL_LoadBMP("back.bmp");
 	Back2 = SDL_LoadBMP("back.bmp");
+	taste = IMG_Load("spaceship.png");
+	tisto = SDL_CreateTextureFromSurface(maxito, taste);
 
 	
 	tex = SDL_CreateTextureFromSurface(maxito,image1);
@@ -88,7 +96,7 @@ int main(int argc, char* args[])
 
 		for (int i = 0; i < BULLET; i++)
 		{
-			SDL_RenderCopy(maxito, laser, NULL, &shoote[i]);
+			SDL_RenderCopy(maxito, tisto, &Sprite2, &shoote[i]);
 		}
 	
 		if (shoot)
@@ -97,7 +105,7 @@ int main(int argc, char* args[])
 			shoote[counter-1].y = rect.y+(rect.h/3);
 			shoot = false;
 		}
-		SDL_RenderCopy(maxito, tex, NULL, &rect);//renderitza la textura del rectangle petit
+		SDL_RenderCopy(maxito, tisto, &Sprite, &rect);//renderitza la textura del rectangle petit
 		SDL_RenderPresent(maxito);// Render the changes above(per sobre)
 		SDL_PollEvent(&event);
 		for (int i = 0; i < BULLET; i++)
