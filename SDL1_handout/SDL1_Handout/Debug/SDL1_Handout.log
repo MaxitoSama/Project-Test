@@ -1,2 +1,4 @@
 ﻿  Main.cpp
-  SDL1_Handout.vcxproj -> D:\1 MARC\Universitat\AA_Videojocs\Projecte 1\SDL1_handout\Debug\SDL1_Handout.exe
+c:\users\marcgiu\documents\github\project-test\sdl1_handout\sdl1_handout\application.h(31): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'update_status' can equal the given constant
+  SDL1_Handout.vcxproj -> C:\Users\marcgiu\Documents\GitHub\Project-Test\SDL1_handout\Debug\SDL1_Handout.exe
+  SDL1_Handout.vcxproj -> C:\Users\marcgiu\Documents\GitHub\Project-Test\SDL1_handout\Debug\SDL1_Handout.pdb (Full PDB)

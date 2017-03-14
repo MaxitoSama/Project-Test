@@ -34,7 +34,6 @@ public:
 				break;
 			}
 		}
-		
 		// TODO 5: Make sure that if Init() / PreUpdate/Update/PostUpdate/CleanUP return
 		// an exit code App exits correctly.
 		return true; 
@@ -87,7 +86,7 @@ public:
 	// TODO 3: Make sure all modules have a chance to cleanup
 	bool CleanUp()
 	{
-		for (int i = NUM_MODULES; i > 0; ++i) {
+		for (int i = NUM_MODULES; i >= 0; --i) {
 			modules[i]->CleanUp();
 			if (PreUpdate() == update_status::UPDATE_ERROR)
 			{
