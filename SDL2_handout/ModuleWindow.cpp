@@ -16,13 +16,12 @@ bool ModuleWindow::Init()
 		LOG("Could not create window: %s\n", SDL_GetError());
 		ret = false;
 	}
+	else {
 
-	window = SDL_CreateWindow("Max", 0, 0, 400, 400, SDL_WINDOW_OPENGL);
-
+		window = SDL_CreateWindow("Max", 0, 0, 400, 400, SDL_WINDOW_OPENGL);
+	}
 	return ret;
 }
-
-
 // TODO 3: pick the width and height and experiment with flags: borderless / fullscreen / resizable,
 // then create the window and check for errors
 

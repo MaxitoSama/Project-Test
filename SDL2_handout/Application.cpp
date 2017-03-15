@@ -38,6 +38,6 @@ bool Application::CleanUp()
 
 	for(int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
 		ret = modules[i]->CleanUp();
-
+	SDL_Quit();
 	return ret;
 }
