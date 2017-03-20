@@ -33,7 +33,7 @@ bool ModuleRender::Init()
 	}
 
 	// TODO 9: load a texture "test.png" to test is everything works well
-	App->textures->Load("test.png");
+	App->textures->Load("Area.png");
 	return ret;
 }
 
@@ -45,7 +45,7 @@ update_status ModuleRender::PreUpdate()
 	SDL_RenderClear(renderer);
 
 	// TODO 10: Blit our test texture to check functionality
-	Blit(App->textures->textures[0], 0, 0, NULL);
+	Blit(App->textures->textures[0], 400, 0, NULL);
 	return update_status::UPDATE_CONTINUE;
 }
 

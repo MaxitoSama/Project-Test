@@ -78,9 +78,5 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 		textures[last_texture++] = texture;
 	}
 
-	
-	
-	
-
 	return nullptr;
 }

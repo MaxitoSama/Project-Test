@@ -5,6 +5,7 @@
 
 #define NUM_MODULES 4
 
+class ModuleAudio;
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
@@ -20,6 +21,7 @@ public:
 	ModuleRender* render;
 	ModuleInput* input;
 	ModuleTextures* textures;
+	ModuleAudio* audio;
 
 public:
 
