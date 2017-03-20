@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -34,6 +35,8 @@ bool ModuleRender::Init()
 
 	// TODO 9: load a texture "test.png" to test is everything works well
 	App->textures->Load("Area.png");
+	
+	App->audio->Load("max.ogg");
 	return ret;
 }
 
@@ -94,3 +97,5 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 
 	return ret;
 }
+
+bool ModuleRender::Sound(MIX_Music*)
