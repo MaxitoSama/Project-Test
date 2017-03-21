@@ -35,7 +35,7 @@ bool ModuleRender::Init()
 	
 	fons.h = 3262;
 	fons.w = 360;
-	fonsx = 350;
+	fonsx = 0;
 	fonsy = -3262+SCREEN_HEIGHT;
 
 	// TODO 9: load a texture "test.png" to test is everything works well
