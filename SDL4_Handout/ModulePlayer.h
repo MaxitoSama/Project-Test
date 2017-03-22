@@ -17,6 +17,8 @@ public:
 	bool Start();
 	update_status Update();
 
+	Animation animatione(Animation* animation, Animation& animation2);
+
 public:
 
 	SDL_Texture* graphics = nullptr;
@@ -25,6 +27,7 @@ public:
 	Animation backward;
 	Animation Punch;
 	iPoint position;
+	bool punch=false;
 
 };
 

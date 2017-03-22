@@ -66,6 +66,10 @@ update_status ModulePlayer::Update()
 
 	int speed = 1;
 
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	{
+		current_animation = &Punch;
+	}
 	if(App->input->keyboard[SDL_SCANCODE_D] == 1)
 	{
 		current_animation = &forward;
@@ -76,10 +80,8 @@ update_status ModulePlayer::Update()
 		current_animation = &backward;
 		position.x -= speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
-	{
-		current_animation = &Punch;
-	}
+ 	
+	
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
