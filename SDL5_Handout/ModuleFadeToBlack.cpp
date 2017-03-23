@@ -52,8 +52,13 @@ update_status ModuleFadeToBlack::Update()
 		{
 			normalized = 1.0f - normalized;
 
-			if(now >= total_time)
+			if (now >= total_time) {
 				current_step = fade_step::none;
+				App->scene_ken->fading = false;
+				App->scene_honda->fading = false;
+			}
+				
+
 		} break;
 	}
 
