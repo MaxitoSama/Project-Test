@@ -1,12 +1,1 @@
-﻿  ModuleWindow.cpp
-  ModuleTextures.cpp
-  ModuleRender.cpp
-  ModulePlayer.cpp
-  ModuleInput.cpp
-  ModuleBackground.cpp
-  Main.cpp
-  Globals.cpp
-  Application.cpp
-  Generating Code...
-  SDL Game.vcxproj -> C:\Users\marcgiu\Documents\GitHub\Project-Test\SDL4_Handout\Debug\SDL4 Handout.exe
-  SDL Game.vcxproj -> C:\Users\marcgiu\Documents\GitHub\Project-Test\SDL4_Handout\Debug\SDL4 Handout.pdb (Full PDB)
+﻿  SDL Game.vcxproj -> C:\Users\Marc\Documents\GitHub\Project-Test\SDL4_Handout\Debug\SDL4 Handout.exe

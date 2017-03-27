@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+#include "ModuleMap1.h"
+#include "ModuleMap2.h"
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput() : Module()
@@ -43,17 +45,17 @@ update_status ModuleInput::Update()
 	}
 	if (keyboard[SDL_SCANCODE_UP])
 	{
-		if (App->render->fonsy < 0)
+		if (App->map1->fonsy < 0)
 		{
-			App->render->fonsy ++;
+			App->map1->fonsy ++;
 		}
 		
 	}
 	if (keyboard[SDL_SCANCODE_DOWN])
 	{
-		if (App->render->fonsy >-3262 +SCREEN_HEIGHT)
+		if (App->map1->fonsy >-3262 +SCREEN_HEIGHT)
 		{
-			App->render->fonsy --;
+			App->map1->fonsy --;
 		}
 		
 	}

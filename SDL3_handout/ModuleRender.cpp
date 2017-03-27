@@ -3,6 +3,8 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleTextures.h"
+#include "ModuleMap1.h"
+#include "ModuleMap2.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
 
@@ -33,13 +35,8 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 	
-	fons.h = 3262;
-	fons.w = 360;
-	fonsx = 0;
-	fonsy = -3262+SCREEN_HEIGHT;
 
 	// TODO 9: load a texture "test.png" to test is everything works well
-	App->textures->Load("Area.png");
 	return ret;
 }
 
@@ -51,7 +48,6 @@ update_status ModuleRender::PreUpdate()
 	SDL_RenderClear(renderer);
 
 	// TODO 10: Blit our test texture to check functionality
-	Blit(App->textures->textures[0], fonsx, fonsy, &fons);
 
 	return update_status::UPDATE_CONTINUE;
 }

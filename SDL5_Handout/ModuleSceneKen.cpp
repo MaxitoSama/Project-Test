@@ -6,6 +6,7 @@
 #include "ModuleSceneHonda.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
 #include "Module.h"
 #include "ModuleInput.h"
 
@@ -15,39 +16,12 @@
 
 ModuleSceneKen::ModuleSceneKen()
 {
-	// ground
-	ground.x = 8;
-	ground.y = 391;
-	ground.w = 896;
-	ground.h = 72;
-
-	// foreground
-	foreground.x = 8;
-	foreground.y = 24;
-	foreground.w = 521;
-	foreground.h = 181;
-
 	// Background / sky
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
+	backgroundx = 0;
+	backgroundy = -3256+SCREEN_HEIGHT;
+	background.w = 360;
+	background.h = 3262;
 
-	// flag animation
-	flag.PushBack({848, 208, 40, 40});
-	flag.PushBack({848, 256, 40, 40});
-	flag.PushBack({848, 304, 40, 40});
-	flag.speed = 0.08f;
-
-	// Girl Animation
-	girl.PushBack({624, 16, 32, 56});
-	girl.PushBack({624, 80, 32, 56});
-	girl.PushBack({624, 144, 32, 56});
-	girl.speed = 0.05f;
-
-	// for moving the foreground
-	foreground_pos = 0;
-	forward = true;
 }
 
 ModuleSceneKen::~ModuleSceneKen()
@@ -58,14 +32,15 @@ bool ModuleSceneKen::Start()
 {
 	LOG("Loading ken scene");
 	
-	graphics = App->textures->Load("ken_stage.png");
+	graphics = App->textures->Load("Area1.png");
 
 	// TODO 1: Enable (and properly disable) the player module
 	
-	App->player->Enable();
+	App->music->Enable();
 
 	return true;
 }
+
 
 // UnLoad assets
 bool ModuleSceneKen::CleanUp()
@@ -78,31 +53,27 @@ bool ModuleSceneKen::CleanUp()
 // Update: draw background
 update_status ModuleSceneKen::Update()
 {
-	// Calculate boat Y position -----------------------------
-	if(foreground_pos < -6.0f)
-		forward = false;
-	else if(foreground_pos > 0.0f)
-		forward = true;
-	
-	if(forward)
-		foreground_pos -= 0.02f;
-	else
-		foreground_pos += 0.02f;
-
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, 0, 0, &background, 0.75f); // sea and sky
-	App->render->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 0.75f); // flag animation
+	App->render->Blit(graphics, backgroundx, backgroundy, &background, 0.75f);
 
-	App->render->Blit(graphics, 0, (int)foreground_pos, &foreground, 0.92f);
-	App->render->Blit(graphics, 192, 104 + (int)foreground_pos, &(girl.GetCurrentFrame()), 0.92f); // girl animation
-	
-	App->render->Blit(graphics, 0, 170, &ground);
+	int speed = 3;
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+		if (backgroundy < 0)
+			backgroundy += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_S] == 1)
+		if (backgroundy > -3262 + SCREEN_HEIGHT)
+			backgroundy -= speed;
+
 
 	// TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && fading==false)
 	{
-		App->fade->FadeToBlack(this, App->scene_honda, 2.0f);
+		App->fade->FadeToBlack(this, App->scene_honda, App->music, App->music, 2.0f);
 		fading == true;
+		backgroundx = 0;
+		backgroundy = -3262 + SCREEN_HEIGHT;
 	}
 	return UPDATE_CONTINUE;
 }

@@ -25,7 +25,6 @@ public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* tex;
 	SDL_Rect fons;
-	int fonsy,fonsx;
 };
 
 #endif //__ModuleRenderer_H__

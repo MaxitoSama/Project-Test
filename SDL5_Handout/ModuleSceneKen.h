@@ -21,13 +21,10 @@ public:
 public:
 	
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect ground;
-	SDL_Rect foreground;
 	SDL_Rect background;
-	Animation flag;
-	Animation girl;
+	int backgroundx = 0;
+	int backgroundy=0;
 	bool fading;
-	float foreground_pos;
 	bool forward;
 };
 

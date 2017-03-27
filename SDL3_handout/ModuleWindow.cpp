@@ -1,6 +1,8 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleWindow.h"
+#include "ModuleMap1.h"
+#include "ModuleMap2.h"
 #include "SDL/include/SDL.h"
 
 ModuleWindow::ModuleWindow() : Module()

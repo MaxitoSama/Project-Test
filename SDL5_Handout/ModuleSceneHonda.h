@@ -20,11 +20,9 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect ground;
-	SDL_Rect roof;
-	SDL_Rect foreground;
 	SDL_Rect background;
-	Animation water;
+	int backgroundx = 0;
+	int backgroundy = 0;
 	bool fading;
 };
 

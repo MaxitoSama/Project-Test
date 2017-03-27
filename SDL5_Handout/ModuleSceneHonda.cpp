@@ -6,29 +6,18 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 #include "ModulePlayer.h"
 
 // Reference at https://youtu.be/6OlenbCC4WI?t=382
 
 ModuleSceneHonda::ModuleSceneHonda()
 {
-	// ground
-	ground = {8, 376, 848, 64};
-
-	// roof
-	roof = {91, 7, 765, 49};
-
-	// foreground
-	foreground = {164, 66, 336, 51};
-
 	// Background / sky
-	background = {120, 128, 671, 199};
-
-	// flag animation
-	water.PushBack({8, 447, 283, 9});
-	water.PushBack({296, 447, 283, 12});
-	water.PushBack({588, 447, 283, 18});
-	water.speed = 0.02f;
+	backgroundx = 0;
+	backgroundy = -3256 + SCREEN_HEIGHT;
+	background.w = 360;
+	background.h = 3262;
 }
 
 ModuleSceneHonda::~ModuleSceneHonda()
@@ -39,11 +28,11 @@ bool ModuleSceneHonda::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("honda_stage2.png");
+	graphics = App->textures->Load("Area2.png");
 
 	// TODO 1: Enable (and properly disable) the player module
 	
-	App->player->Enable();
+	App->music->Enable();
 
 	return ret;
 }
@@ -61,19 +50,26 @@ bool ModuleSceneHonda::CleanUp()
 update_status ModuleSceneHonda::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, 0, 160, &ground);
-	App->render->Blit(graphics, 50, -15, &background, 0.75f); // back of the room
-	
-	App->render->Blit(graphics, 280, 125, &foreground);
-	App->render->Blit(graphics, 305, 136, &(water.GetCurrentFrame())); // water animation
-	App->render->Blit(graphics, 0, -16, &roof, 0.75f);
+	App->render->Blit(graphics, backgroundx, backgroundy, &background, 0.75f);
+
+	int speed = 3;
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+		if (backgroundy < 0)
+			backgroundy += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_S] == 1)
+		if (backgroundy > -3262 + SCREEN_HEIGHT)
+			backgroundy -= speed;
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && fading==false)
 	{
-		App->fade->FadeToBlack(this,App->scene_ken,2.0f);
+		App->fade->FadeToBlack(this, App->scene_ken, App->music, App->music, 2.0f);
 		fading == true;
+		backgroundx = 0;
+		backgroundy = -3256 + SCREEN_HEIGHT;
 	}
 
 	return UPDATE_CONTINUE;
