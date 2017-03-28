@@ -1,6 +1,22 @@
-﻿  ModuleSceneScores.cpp
+﻿  Application.cpp
+  Generating Code...
+  Compiling...
+  ModuleWindow.cpp
+  ModuleTextures.cpp
+  ModuleSceneScores.cpp
 c:\users\polff2\documents\github\project-test\sdl5_handout\modulescenescores.cpp(73): warning C4553: '==': operator has no effect; did you intend '='?
-  Application.cpp
+  ModuleSceneKen.cpp
+c:\users\polff2\documents\github\project-test\sdl5_handout\modulesceneken.cpp(74): warning C4553: '==': operator has no effect; did you intend '='?
+  ModuleSceneInit.cpp
+c:\users\polff2\documents\github\project-test\sdl5_handout\modulesceneinit.cpp(71): warning C4553: '==': operator has no effect; did you intend '='?
+  ModuleSceneHonda.cpp
+c:\users\polff2\documents\github\project-test\sdl5_handout\modulescenehonda.cpp(71): warning C4553: '==': operator has no effect; did you intend '='?
+  ModuleRender.cpp
+  ModulePlayer.cpp
+  ModuleInput.cpp
+  ModuleFadeToBlack.cpp
+  ModuleAudio.cpp
+  Main.cpp
   Generating Code...
   SDL Game.vcxproj -> C:\Users\polff2\Documents\GitHub\Project-Test\SDL5_Handout\Debug\SDL5 Handout.exe
   SDL Game.vcxproj -> C:\Users\polff2\Documents\GitHub\Project-Test\SDL5_Handout\Debug\SDL5 Handout.pdb (Full PDB)
