@@ -8,6 +8,7 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleSceneScores.h"
 
 // Reference at https://youtu.be/6OlenbCC4WI?t=382
 
@@ -66,7 +67,7 @@ update_status ModuleSceneHonda::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && fading==false)
 	{
-		App->fade->FadeToBlack(this, App->scene_ken, App->music, App->music, 2.0f);
+		App->fade->FadeToBlack(this, App->scene_scores, App->music, App->music, 2.0f);
 		fading == true;
 		backgroundx = 0;
 		backgroundy = -3256 + SCREEN_HEIGHT;
