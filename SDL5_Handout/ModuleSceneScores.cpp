@@ -18,9 +18,9 @@ ModuleSceneScores::ModuleSceneScores()
 {
 	// Background / sky
 	backgroundx = 0;
-	backgroundy = -3256 + SCREEN_HEIGHT;
-	background.w = 360;
-	background.h = 3262;
+	backgroundy = -256 + SCREEN_HEIGHT;
+	background.w = 224;
+	background.h = 256;
 }
 
 ModuleSceneScores::~ModuleSceneScores()
@@ -62,7 +62,7 @@ update_status ModuleSceneScores::Update()
 			backgroundy += speed;
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == 1)
-		if (backgroundy > -3262 + SCREEN_HEIGHT)
+		if (backgroundy > -256 + SCREEN_HEIGHT)
 			backgroundy -= speed;
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
@@ -72,7 +72,7 @@ update_status ModuleSceneScores::Update()
 		App->fade->FadeToBlack(this, App->scene_init, App->music, App->music, 2.0f);
 		fading == true;
 		backgroundx = 0;
-		backgroundy = -3256 + SCREEN_HEIGHT;
+		backgroundy = -256 + SCREEN_HEIGHT;
 	}
 
 	return UPDATE_CONTINUE;
