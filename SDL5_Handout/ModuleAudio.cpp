@@ -30,7 +30,7 @@ bool ModuleAudio::Start()
 }
 bool ModuleAudio::CleanUp()
 {
-	Mix_FreeMusic(musica[0]);
+	//Mix_FreeMusic(musica[0]);
 	Mix_CloseAudio();
 	Mix_Quit();
 	return true;
@@ -44,7 +44,7 @@ Mix_Music* const ModuleAudio::Load(const char* path)
 		LOG("Error with the music %s", path);
 	}
 	else {
-		musica[last_track++] = music;
+		musica[0] = music;
 	}
 	return music;
 }

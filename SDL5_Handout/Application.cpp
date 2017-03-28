@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
+#include "ModuleAudio1.h"
 #include "ModuleSceneInit.h"
 #include "ModuleSceneScores.h"
 
@@ -24,6 +25,7 @@ Application::Application()
 	modules[8] = player = new ModulePlayer();
 	modules[9] = fade = new ModuleFadeToBlack();
 	modules[10] = music = new ModuleAudio();
+	modules[11] = music1 = new ModuleAudio1();
 }	
 
 Application::~Application()
@@ -39,6 +41,7 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	music->Disable();
+	music1->Disable();
 	// Disable the map that you do not start with
 	scene_honda->Disable();
 	scene_ken->Disable();

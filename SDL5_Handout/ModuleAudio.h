@@ -18,6 +18,7 @@ public:
 	bool CleanUp();
 	Mix_Music* const Load(const char* path);
 
+
 public:
 	Mix_Music* musica[MAX_TRACKS];
 	int last_track = 0;

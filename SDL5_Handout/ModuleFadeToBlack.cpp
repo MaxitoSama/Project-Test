@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleSceneHonda.h"
 #include "ModuleSceneKen.h"
+#include "ModuleAudio.h"
+#include "ModuleAudio1.h"
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_timer.h"
 
@@ -42,8 +44,6 @@ update_status ModuleFadeToBlack::Update()
 				// TODO 2: enable / disable the modules received when FadeToBlacks() gets called
 				module1->Disable();
 				module2->Enable();
-				music1->Disable();
-				music2->Enable();
 				total_time += total_time;
 				start_time = SDL_GetTicks();
 				current_step = fade_step::fade_from_black;
@@ -72,7 +72,7 @@ update_status ModuleFadeToBlack::Update()
 }
 
 // Fade to black. At mid point deactivate one module, then activate the other
-bool ModuleFadeToBlack::FadeToBlack(Module* module_off, Module* module_on,Module* music_on,Module* music_off, float time)
+bool ModuleFadeToBlack::FadeToBlack(Module* module_off, Module* module_on, float time)
 {
 	bool ret = false;
 
@@ -84,8 +84,6 @@ bool ModuleFadeToBlack::FadeToBlack(Module* module_off, Module* module_on,Module
 		ret = true;
 		module1 = module_off;
 		module2 = module_on;
-		music1 = music_off;
-		music2 = music_on;
 	}
 	return ret;
 }

@@ -12,7 +12,7 @@ public:
 
 	bool Start();
 	update_status Update();
-	bool FadeToBlack(Module* module_off, Module* module_on, Module* music_on, Module* music_off, float time);
+	bool FadeToBlack(Module* module_off, Module* module_on, float time);
 
 private:
 
@@ -28,8 +28,6 @@ private:
 	SDL_Rect screen;
 	Module* module1;
 	Module* module2;
-	Module* music1;
-	Module* music2;
 };
 
 #endif //__MODULEFADETOBLACK_H__
